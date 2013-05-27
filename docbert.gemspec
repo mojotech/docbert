@@ -19,4 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'kramdown', '>= 1.0.0'
   s.add_dependency 'cucumber'
+
+  s.add_development_dependency 'rspec-expectations'
 end
