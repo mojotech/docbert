@@ -4,7 +4,6 @@ module Docbert
   class Parser < Kramdown::Parser::Kramdown
     EXAMPLE_KEYWORDS = "Given|When|Then|And|But|\\|"
     EXAMPLE_START    = /#{BLANK_LINE}?^\s*Example:/
-    EXAMPLE_BODY     = /(?:\s*(?:#{EXAMPLE_KEYWORDS}).+?\n|#{BLANK_LINE})+/m
 
     def initialize(source, options)
       super
@@ -13,6 +12,10 @@ module Docbert
     end
 
     private
+
+    def example_body_regexp(keywords)
+      /(?:\s*(?:#{keywords}).+?\n|#{BLANK_LINE})+/m
+    end
 
     # Parse an example block.
     #
@@ -23,7 +26,10 @@ module Docbert
 
       example  = new_block_el(:example)
       title_el = Element.new(:example_title, @src.scan(/.+?\n/).strip)
-      body     = @src.scan(EXAMPLE_BODY).gsub(/^ +/, '').strip
+      body     = @src.
+        scan(example_body_regexp(EXAMPLE_KEYWORDS)).
+        gsub(/^ +/, '').
+        strip
       body_el  = Element.new(:example_body, body)
 
       example.children << title_el << body_el
