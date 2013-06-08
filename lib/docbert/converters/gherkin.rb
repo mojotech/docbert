@@ -16,10 +16,7 @@ module Docbert
       private
 
       def convert_example(el)
-        title, body = el.children
-
-        convert_example_title(title, "  ", 'Scenario') +
-          convert_example_body(body, "    ")
+        convert_example_generic('Scenario', el)
       end
 
       def convert_example_body(body, indent)
@@ -28,6 +25,13 @@ module Docbert
           split(/\n/).
           map { |step| "#{indent}#{step.strip}\n" }.
           join
+      end
+
+      def convert_example_generic(type, el)
+        title, body = el.children
+
+        convert_example_title(title, "  ", type) +
+          convert_example_body(body, "    ")
       end
 
       def convert_example_title(title, indent, type)
