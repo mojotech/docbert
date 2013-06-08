@@ -2,13 +2,16 @@ require 'kramdown/parser/kramdown'
 
 module Docbert
   class Parser < Kramdown::Parser::Kramdown
-    EXAMPLE_KEYWORDS = "Given|When|Then|And|But|\\|"
-    EXAMPLE_START    = /#{BLANK_LINE}?^\s*Example:/
+    EXAMPLE_KEYWORDS         = "Given|When|Then|And|But|\\|"
+    EXAMPLE_START            = /#{BLANK_LINE}?^\s*Example:/
+    EXAMPLE_OUTLINE_KEYWORDS = "#{EXAMPLE_KEYWORDS}|Examples:"
+    EXAMPLE_OUTLINE_START    = /#{BLANK_LINE}?^\s*Example Outline:/
 
     def initialize(source, options)
       super
 
       register_example_parser
+      register_example_outline_parser
     end
 
     private
@@ -41,12 +44,23 @@ module Docbert
       @tree.children << example
     end
 
+    def parse_example_outline
+      build_example_node :example_outline,
+                         EXAMPLE_OUTLINE_START,
+                         EXAMPLE_OUTLINE_KEYWORDS
+    end
+
     def register_example_parser
       @block_parsers.unshift(:example)
+    end
+
+    def register_example_outline_parser
+      @block_parsers.unshift(:example_outline)
     end
 
     Kramdown::Parser::Docbert = self
 
     define_parser :example, /#{EXAMPLE_START}/
+    define_parser :example_outline, /#{EXAMPLE_OUTLINE_START}/
   end
 end
