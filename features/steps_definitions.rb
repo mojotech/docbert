@@ -1,4 +1,4 @@
-Given(/^I am a business analyst$/) do; end
+Given(/^I am a (?:business analyst|software developer|tester)$/) do; end
 
 When(/^I write a feature, docbert\-style$/) do; end
 
@@ -25,6 +25,10 @@ end
 
 Then(/^"(.*?)" should contain the following scenarios:$/) do |file, table|
   table.diff! scenarios(/Scenario:/, file).map { |s| [s] }
+end
+
+Then(/^"(.*?)" should contain the following scenario outlines:$/) do |file, table|
+  table.diff! scenarios(/Scenario Outline:/, file).map { |s| [s] }
 end
 
 def scenarios(regexp, file)

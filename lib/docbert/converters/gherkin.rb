@@ -38,6 +38,10 @@ module Docbert
         "#{indent}#{type}: #{title.value}\n"
       end
 
+      def convert_example_outline(el)
+        convert_example_generic('Scenario Outline', el)
+      end
+
       # Convert a level 1 header to a feature title.
       #
       # Current limitations:

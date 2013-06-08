@@ -46,6 +46,24 @@ Next follows the example body, which consists of cucumber steps. The example
 body should have at least the same indentation as the example declaration (but I
 like it better with an extra 2-space indentation).
 
+### Example Outlines
+
+Example outlines are the equivalent of cucumber's scenario outlines, and they
+work in the same manner. The only difference is that you declare them using
+`Example Outline` instead of `Scenario Outline`:
+
+    Example Outline: everyone writes a feature, docbert-style
+
+      Given I am a <role>
+      When I write a feature, docbert-style
+      Then my feature writing skill level automatically surpasses 9000
+
+      Examples:
+        | role               |
+        | business analyst   |
+        | software developer |
+        | tester             |
+
 ### Definitions
 
 A definition is a reusable group of steps that behaves as a single step when
@@ -84,6 +102,8 @@ documentation won't be copied to the cucumber feature file.
         | writing a feature, docbert-style                         |
         | using a definition                                       |
         | converting a docbert-style feature to a cucumber feature |
+      And "features/docbert.feature" should contain the following scenario outlines:
+        | everyone writes a feature, docbert-style |
 
 ## TODO
 
