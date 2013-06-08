@@ -24,3 +24,4 @@ tmp
 _yardoc
 doc/
 /features/docbert.feature
+/features/docbert.feature.rb

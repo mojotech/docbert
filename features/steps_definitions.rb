@@ -7,8 +7,6 @@ end
 
 Given(/^I am on the signup page$/) do; end
 
-When(/^I submit the signup form with valid data$/) do; end
-
 Then(/^I should be signed up$/) do; end
 
 When(/^I run "(.*?)"$/) do |command|
@@ -18,6 +16,10 @@ When(/^I run "(.*?)"$/) do |command|
 
   system "ruby -Ilib bin/#{command}"
 end
+
+When(/^I fill in the signup form with the following values:$/) do |table| end
+
+When(/^I submit the signup form$/) do; end
 
 Then(/^it should generate the feature "(.*?)"$/) do |file|
   expect(File.exist?(file)).to be_true

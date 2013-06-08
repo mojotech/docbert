@@ -5,7 +5,10 @@ require 'docbert'
 ARGV.each do |file_name|
   raw = File.read(file_name)
   doc = Kramdown::Document.new(raw, :input => :docbert)
-  out = file_name.sub('.md', '')
 
-  IO.write out, doc.to_gherkin
+  outf = file_name.sub('.md', '')
+  outd = file_name.sub('.md', '.rb')
+
+  IO.write outf, doc.to_gherkin
+  IO.write outd, doc.to_step_definitions
 end
