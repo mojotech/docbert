@@ -31,6 +31,6 @@ def scenarios(file)
   IO.
     read(file).
     split(/\n/).
-    grep(/Scenario/).
+    grep(/Scenario:/).
     map { |s| s.gsub(/Scenario:/, '').strip }
 end
