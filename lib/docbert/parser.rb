@@ -2,8 +2,9 @@ require 'kramdown/parser/kramdown'
 
 module Docbert
   class Parser < Kramdown::Parser::Kramdown
-    EXAMPLE_START = /#{BLANK_LINE}?^\s*Example:/
-    EXAMPLE_BODY  = /(?:\s*(?:Given|When|Then|And|But|\|).+?\n|#{BLANK_LINE})+/m
+    EXAMPLE_KEYWORDS = "Given|When|Then|And|But|\\|"
+    EXAMPLE_START    = /#{BLANK_LINE}?^\s*Example:/
+    EXAMPLE_BODY     = /(?:\s*(?:#{EXAMPLE_KEYWORDS}).+?\n|#{BLANK_LINE})+/m
 
     def initialize(source, options)
       super
