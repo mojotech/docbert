@@ -24,13 +24,13 @@ Then(/^it should generate the feature "(.*?)"$/) do |file|
 end
 
 Then(/^"(.*?)" should contain the following scenarios:$/) do |file, table|
-  table.diff! scenarios(file).map { |s| [s] }
+  table.diff! scenarios(/Scenario:/, file).map { |s| [s] }
 end
 
-def scenarios(file)
+def scenarios(regexp, file)
   IO.
     read(file).
     split(/\n/).
-    grep(/Scenario:/).
-    map { |s| s.gsub(/Scenario:/, '').strip }
+    grep(regexp).
+    map { |s| s.gsub(regexp, '').strip }
 end
