@@ -22,12 +22,16 @@ module Docbert
     # Currently only creates 2 nodes: one for the title and another for the
     # example body.
     def parse_example
-      @src.skip EXAMPLE_START
+      build_example_node :example, EXAMPLE_START, EXAMPLE_KEYWORDS
+    end
 
-      example  = new_block_el(:example)
+    def build_example_node(root_name, start_regexp, keywords_regexp)
+      @src.skip start_regexp
+
+      example  = new_block_el(root_name)
       title_el = Element.new(:example_title, @src.scan(/.+?\n/).strip)
       body     = @src.
-        scan(example_body_regexp(EXAMPLE_KEYWORDS)).
+        scan(example_body_regexp(keywords_regexp)).
         gsub(/^ +/, '').
         strip
       body_el  = Element.new(:example_body, body)
