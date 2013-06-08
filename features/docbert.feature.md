@@ -108,5 +108,4 @@ documentation won't be copied to the cucumber feature file.
 ## TODO
 
   * Tag support
-  * Example outline support
   * Definition placeholders
