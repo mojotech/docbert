@@ -18,7 +18,7 @@ module Docbert
       def convert_example(el)
         title, body = el.children
 
-        convert_example_title(title, "  ") +
+        convert_example_title(title, "  ", 'Scenario') +
           convert_example_body(body, "    ")
       end
 
@@ -30,8 +30,8 @@ module Docbert
           join
       end
 
-      def convert_example_title(title, indent)
-        "#{indent}Scenario: #{title.value}\n"
+      def convert_example_title(title, indent, type)
+        "#{indent}#{type}: #{title.value}\n"
       end
 
       # Convert a level 1 header to a feature title.
