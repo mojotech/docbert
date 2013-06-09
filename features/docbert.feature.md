@@ -109,3 +109,4 @@ documentation won't be copied to the cucumber feature file.
 
   * Tag support
   * Definition placeholders
+  * Pending examples
