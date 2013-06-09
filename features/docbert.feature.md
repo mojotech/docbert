@@ -126,5 +126,5 @@ documentation won't be copied to the cucumber feature file.
 ## TODO
 
   * Tag support
-  * Definition placeholders
+  * Definition placeholder error checking
   * Pending examples
