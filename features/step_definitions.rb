@@ -21,6 +21,12 @@ When(/^I fill in the signup form with the following values:$/) do |table| end
 
 When(/^I submit the signup form$/) do; end
 
+When(/^I am on the sign in page$/) do; end
+
+When(/^I submit the sign in form as business analyst$/) do; end
+
+Then(/^I should be signed in$/) do; end
+
 Then(/^it should generate the feature "(.*?)"$/) do |file|
   expect(File.exist?(file)).to be_true
 end

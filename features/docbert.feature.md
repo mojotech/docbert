@@ -86,6 +86,23 @@ Once defined, a definition can be used as any other step:
       When I submit the signup form with valid data
       Then I should be signed up
 
+#### Parameterized definitions
+
+You can parameterize definitions in the same way you parameterize example
+outlines:
+
+    Definition: I sign in as a <user type>
+
+      Given I am on the sign in page
+      And I submit the sign in form as <user type>
+
+    Example: using a parameterized definition
+
+      When I sign in as a business analyst
+      Then I should be signed in
+
+**Note: there is no error checking right now. See the TODO below.**
+
 ## Executing
 
 There is no way to execute a docbert feature, because a docbert feature isn't
@@ -101,6 +118,7 @@ documentation won't be copied to the cucumber feature file.
       And "features/docbert.feature" should contain the following scenarios:
         | writing a feature, docbert-style                         |
         | using a definition                                       |
+        | using a parameterized definition                         |
         | converting a docbert-style feature to a cucumber feature |
       And "features/docbert.feature" should contain the following scenario outlines:
         | everyone writes a feature, docbert-style |

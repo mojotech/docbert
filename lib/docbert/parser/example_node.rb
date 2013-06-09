@@ -7,11 +7,7 @@ module Docbert
       EXAMPLE_OUTLINE_KEYWORDS = "#{EXAMPLE_KEYWORDS}|Examples:"
 
       def self.as_definition(element_factory, fragment)
-        new(:example_definition,
-            EXAMPLE_DEFINITION_START,
-            EXAMPLE_KEYWORDS,
-            element_factory,
-            fragment)
+        DefinitionNode.new(element_factory, fragment)
       end
 
       def self.as_example(element_factory, fragment)
