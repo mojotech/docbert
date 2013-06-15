@@ -3,7 +3,7 @@ module Docbert
     class ExampleNode
       BLANK_LINE = Kramdown::Parser::Kramdown::BLANK_LINE
 
-      EXAMPLE_KEYWORDS         = "Given|When|Then|And|But|\\|"
+      EXAMPLE_KEYWORDS         = 'Given|When|Then|And|But|\\||"""'
       EXAMPLE_OUTLINE_KEYWORDS = "#{EXAMPLE_KEYWORDS}|Examples:"
 
       def self.as_definition(element_factory, fragment)

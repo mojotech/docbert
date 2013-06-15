@@ -32,6 +32,10 @@ example title. Its format is as follows:
 
       Given I am a business analyst
       When I write a feature, docbert-style
+      And I include some random multi-line text:
+        """
+        Some random multi-line text
+        """
       Then my feature writing skill level automatically surpasses 9000
 
 The example title should be placed on a line by itself. It will be turned into

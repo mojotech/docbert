@@ -2,6 +2,8 @@ Given(/^I am a (?:business analyst|software developer|tester)$/) do; end
 
 When(/^I write a feature, docbert\-style$/) do; end
 
+When(/^I include some random multi\-line text:$/) do |string| end
+
 Then(/^my feature writing skill level automatically surpasses (\d+)$/) do |level|
 end
 
