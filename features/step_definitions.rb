@@ -1,3 +1,5 @@
+Given(/^a background step$/) do; end
+
 Given(/^I am a (?:business analyst|software developer|tester)$/) do; end
 
 When(/^I write a feature, docbert\-style$/) do; end

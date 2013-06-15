@@ -6,6 +6,14 @@ module Docbert
       EXAMPLE_KEYWORDS         = 'Given|When|Then|And|But|\\||"""'
       EXAMPLE_OUTLINE_KEYWORDS = "#{EXAMPLE_KEYWORDS}|Examples:"
 
+      def self.as_background(element_factory, fragment)
+        new(:example_background,
+            EXAMPLE_BACKGROUND_START,
+            EXAMPLE_KEYWORDS,
+            element_factory,
+            fragment)
+      end
+
       def self.as_definition(element_factory, fragment)
         DefinitionNode.new(element_factory, fragment)
       end
@@ -62,7 +70,7 @@ module Docbert
       end
 
       def parse_title(frag)
-        title = frag.scan(/.+?\n/).strip
+        title = frag.scan(/.*?\n/).strip
 
         element_factory.new_el(:example_title, title)
       end

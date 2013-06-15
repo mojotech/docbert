@@ -19,6 +19,12 @@ module Docbert
         convert_example_generic('Scenario', el)
       end
 
+      def convert_example_background(el)
+        _, body = el.children
+
+        "  Background:\n" << convert_example_body(body, "    ")
+      end
+
       def convert_example_body(body, indent)
         body.
           value.

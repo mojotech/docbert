@@ -18,12 +18,18 @@ To write docbert documents, simply write markdown--more specifically, the
 [kramdown variant](http://kramdown.rubyforge.org/syntax.html)--and enclose
 cucumber scenarios (renamed to examples) in an example block.
 
-Note the following:
+*Note:* Don't use the `Feature:` declaration. The feature name will be
+automatically extracted from the file's `h1` header.
 
-  * Don't use the `Feature:` declaration. The feature name will be automatically
-    extracted from the file's `h1` header.
+### Background
 
-  * Don't use `Background` blocks. Use [Definitions](#definitions) instead.
+docbert supports `Background` declarations, but they must appear before any
+example:
+
+     Background:
+       Given a background step
+
+### Examples
 
 Docbert examples begin with an example declaration, which also contains the
 example title. Its format is as follows:
